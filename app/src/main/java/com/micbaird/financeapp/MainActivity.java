@@ -28,6 +28,15 @@ public class MainActivity extends ActionBarActivity {
             }
         });
 
+        companyBtn = (Button) findViewById(R.id.companyProfile);
+        companyBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, CompanyProfileActivity.class);
+                startActivity(intent);
+            }
+        });
+
     }
 
 
