@@ -1,8 +1,8 @@
 package com.micbaird.financeapp;
 
 import android.content.Intent;
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -11,34 +11,40 @@ import android.widget.Button;
 
 public class SearchResultsActivity extends ActionBarActivity {
 
-    Button companyBtn = null;
-    Button mainBtn = null;
+    private Button mCompanyButton;
+    private Button mMainButton;
+
+    /*
+        ---------------------------------
+        Lifecycle Methods
+        ---------------------------------
+     */
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search_results);
 
-        companyBtn = (Button) findViewById(R.id.companyProfile);
-        companyBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(SearchResultsActivity.this, CompanyProfileActivity.class);
-                startActivity(intent);
-            }
-        });
-
-        mainBtn = (Button) findViewById(R.id.mainActivity);
-        mainBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(SearchResultsActivity.this, MainActivity.class);
-                startActivity(intent);
-            }
-        });
+        initControls();
+        initListeners();
 
     }
 
+    private void initControls() {
+        mCompanyButton = (Button) findViewById(R.id.activity_search_results_button_company);
+        mMainButton = (Button) findViewById(R.id.activity_search_results_button_main);
+    }
+
+    private void initListeners() {
+        mCompanyButton.setOnClickListener(mCompanyProfileListener);
+        mMainButton.setOnClickListener(mMainActivityListener);
+    }
+
+     /*
+        ---------------------------------
+        Menu Methods
+        ---------------------------------
+     */
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -61,4 +67,27 @@ public class SearchResultsActivity extends ActionBarActivity {
 
         return super.onOptionsItemSelected(item);
     }
+
+    /*
+        ---------------------------------
+        Listeners
+        ---------------------------------
+     */
+
+    private final View.OnClickListener mMainActivityListener = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            Intent intent = new Intent(SearchResultsActivity.this, MainActivity.class);
+            startActivity(intent);
+        }
+    };
+
+    private final View.OnClickListener mCompanyProfileListener = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            Intent intent = new Intent(SearchResultsActivity.this, CompanyProfileActivity.class);
+            startActivity(intent);
+        }
+    };
+
 }

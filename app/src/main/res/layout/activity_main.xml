@@ -10,24 +10,16 @@
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="Main Activity"
-        android:id="@+id/title"
+        android:id="@+id/activity_main_textview_title"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="27dp" />
-
-    <AnalogClock
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/analogClock"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="142dp" />
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Goto Search"
-        android:id="@+id/searchResults"
+        android:id="@+id/activity_main_button_search"
         android:layout_marginBottom="93dp"
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
@@ -39,10 +31,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Goto Company"
-        android:id="@+id/companyProfile"
+        android:id="@+id/activity_main_button_company"
         android:layout_marginRight="29dp"
         android:layout_marginEnd="29dp"
-        android:layout_alignTop="@+id/searchResults"
+        android:layout_alignTop="@+id/activity_main_button_search"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true" />
 

@@ -11,34 +11,40 @@ import android.widget.Button;
 
 public class CompanyProfileActivity extends ActionBarActivity {
 
-    Button searchBtn = null;
-    Button mainBtn = null;
+    private Button mSearchButton;
+    private Button mMainButton;
+
+    /*
+        ---------------------------------
+        Lifecycle Methods
+        ---------------------------------
+     */
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_company_profile);
 
-        searchBtn = (Button) findViewById(R.id.searchResults);
-        searchBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(CompanyProfileActivity.this, SearchResultsActivity.class);
-                startActivity(intent);
-            }
-        });
-
-        mainBtn = (Button) findViewById(R.id.mainActivity);
-        mainBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(CompanyProfileActivity.this, MainActivity.class);
-                startActivity(intent);
-            }
-        });
+        initControls();
+        initListeners();
 
     }
 
+    private void initControls() {
+        mSearchButton = (Button) findViewById(R.id.activity_company_profile_button_search);
+        mMainButton = (Button) findViewById(R.id.activity_company_profile_button_main);
+    }
+
+    private void initListeners() {
+        mSearchButton.setOnClickListener(mSearchResultsListener);
+        mMainButton.setOnClickListener(mMainActivityListener);
+    }
+
+    /*
+        ---------------------------------
+        Menu Methods
+        ---------------------------------
+     */
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -61,4 +67,27 @@ public class CompanyProfileActivity extends ActionBarActivity {
 
         return super.onOptionsItemSelected(item);
     }
+
+    /*
+        ---------------------------------
+        Listeners
+        ---------------------------------
+     */
+
+    private final View.OnClickListener mSearchResultsListener = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            Intent intent = new Intent(CompanyProfileActivity.this, SearchResultsActivity.class);
+            startActivity(intent);
+        }
+    };
+
+    private final View.OnClickListener mMainActivityListener = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            Intent intent = new Intent(CompanyProfileActivity.this, MainActivity.class);
+            startActivity(intent);
+        }
+    };
+
 }
